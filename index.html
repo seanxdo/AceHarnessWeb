@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-CN" style="">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>ACEHarness - OPC Anywhere</title>
+        <!-- Tailwind CSS Setup -->
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script data-purpose="tailwind-config">
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brand: {
+                                bg: "#1a1a1a",
+                                surface: "#2a2a2a",
+                                border: "#333333",
+                                cyan: "#00F0FF",
+                                purple: "#9D4EDD",
+                            },
+                        },
+                        fontFamily: {
+                            sans: [
+                                '"Inter"',
+                                '"Source Han Sans SC"',
+                                '"Noto Sans CJK SC"',
+                                "system-ui",
+                                "sans-serif",
+                            ],
+                            mono: [
+                                '"Fira Code"',
+                                '"JetBrains Mono"',
+                                "monospace",
+                            ],
+                        },
+                        backgroundImage: {
+                            "gradient-radial":
+                                "radial-gradient(var(--tw-gradient-stops))",
+                            "hero-glow":
+                                "conic-gradient(from 180deg at 50% 50%, #00F0FF33 0deg, #9D4EDD33 180deg, #00F0FF33 360deg)",
+                        },
+                    },
+                },
+            };
+        </script>
+        <!-- Custom Styles for Specific Effects -->
+        <style data-purpose="global-utilities">
+            body {
+                background-color: #1a1a1a;
+                color: #e2e8f0;
+                -webkit-font-smoothing: antialiased;
+            }
+            .glass-panel {
+                background: #2a2a2a;
+                border: 1px solid #333333;
+            }
+            .text-gradient {
+                background: linear-gradient(90deg, #00f0ff 0%, #9d4edd 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .glow-border:hover {
+                box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+                border-color: rgba(0, 240, 255, 0.5);
+            }
+        </style>
+    </head>
+    <body
+        class="relative min-h-screen overflow-x-hidden selection:bg-brand-cyan selection:text-brand-bg"
+    >
+        <!-- BEGIN: MainHeader -->
+        <header
+            class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-brand-border"
+        >
+            <div
+                class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"
+            >
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer group">
+                    <div
+                        aria-label="ACEHarness Logo"
+                        class="h-8 w-8 rounded-md bg-gradient-to-br from-brand-cyan to-brand-purple flex items-center justify-center text-black font-extrabold text-lg group-hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-all"
+                    >
+                        A
+                    </div>
+                </div>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a
+                        class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
+                        href="#"
+                        >产品</a
+                    >
+                    <a
+                        class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
+                        href="#"
+                        >技术</a
+                    >
+                    <a
+                        class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
+                        href="#"
+                        >社区</a
+                    >
+                    <a
+                        class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
+                        href="#"
+                        >文档</a
+                    >
+                </nav>
+                <!-- Action Button -->
+                <div class="flex items-center">
+                    <a
+                        href="https://github.com/cangjielanguage-sig/ACEHarness"
+                        class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-brand-border text-white text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] inline-flex items-center justify-center gap-2"
+                        ><svg
+                            aria-hidden="true"
+                            class="w-4 h-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            ></path></svg
+                        >GitHub</a
+                    >
+                </div>
+            </div>
+        </header>
+        <!-- END: MainHeader -->
+        <main class="relative z-10 pt-32 pb-24">
+            <!-- BEGIN: Hero Section -->
+            <section
+                class="max-w-7xl mx-auto px-6 pt-16 lg:pt-24 pb-20 text-center flex flex-col items-center"
+            >
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 mb-8"
+                >
+                    <span
+                        class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"
+                    ></span>
+                    <span
+                        class="text-xs font-medium text-brand-cyan uppercase tracking-wider"
+                        >你的团队，你做主</span
+                    >
+                </div>
+                <!-- Headline -->
+                <h1
+                    class="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight"
+                >
+                    ACE Harness <br /><span class="text-gradient"
+                        >OPC Anywhere</span
+                    >
+                </h1>
+                <!-- Subtitle -->
+                <p
+                    class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+                >
+                    只需一句话，即刻生成包含
+                    CEO、设计、开发、测试、营销全角色的虚拟化团队
+                </p>
+                <!-- Command Line Mockup -->
+                <div class="w-full max-w-2xl mx-auto text-left relative group">
+                    <!-- Glow effect behind input -->
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-brand-cyan to-brand-purple rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+                    ></div>
+                    <div
+                        class="relative bg-[#0A0F18] border border-brand-border rounded-xl p-1 shadow-2xl flex items-center"
+                    >
+                        <div class="px-4 text-slate-500 font-mono text-lg">
+                            &gt;
+                        </div>
+                        <input
+                            class="w-full bg-transparent border-none text-brand-cyan font-mono text-sm md:text-base focus:ring-0 placeholder-brand-cyan/50 py-4"
+                            readonly=""
+                            type="text"
+                            value="帮我搭建一个App开发团队"
+                        />
+                        <div class="px-4">
+                            <button
+                                class="bg-white text-black px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                            >
+                                Run
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="glass-panel p-4 rounded-3xl border border-brand-cyan/20 w-full max-w-4xl mt-12 mx-auto"
+                >
+                    <img
+                        alt="One Person Company (OPC) - ACEHarness Flat Illustration"
+                        class="rounded-2xl max-w-full h-auto shadow-2xl border border-brand-cyan/10 w-full"
+                        src="./img/OPC_roles.png"
+                    />
+                </div>
+            </section>
+            <!-- END: Hero Section -->
+            <!-- BEGIN: Team Visualization -->
+            <section class="max-w-7xl mx-auto px-6 pt-24">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        全栈 AI 团队就绪
+                    </h2>
+                    <p class="text-slate-400">
+                        高度协作的智能 Agent，无缝对接企业生命周期
+                    </p>
+                </div>
+                <div
+                    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+                >
+                    <!-- Role Card: CEO -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group glow-border transition-all duration-300"
+                    >
+                        <div
+                            class="w-20 h-20 rounded-full mb-4 border-2 border-brand-purple p-1"
+                        >
+                            <img
+                                alt="CEO Avatar"
+                                class="w-full h-full rounded-full object-cover"
+                                src="./img/01.png"
+                            />
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-1">
+                            CEO
+                        </h3>
+                        <p class="text-xs text-brand-purple font-medium mb-3">
+                            决策与战略
+                        </p>
+                        <p class="text-sm text-slate-400 leading-snug">
+                            制定商业模式，协调跨部门资源分配。
+                        </p>
+                    </div>
+                    <!-- Role Card: Designer -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group glow-border transition-all duration-300"
+                    >
+                        <div
+                            class="w-20 h-20 rounded-full mb-4 border-2 border-brand-cyan p-1"
+                        >
+                            <img
+                                alt="Designer Avatar"
+                                class="w-full h-full rounded-full object-cover"
+                                src="./img/02.png"
+                            />
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-1">
+                            设计师
+                        </h3>
+                        <p class="text-xs text-brand-cyan font-medium mb-3">
+                            视觉与体验
+                        </p>
+                        <p class="text-sm text-slate-400 leading-snug">
+                            输出品牌 VI，构建高保真产品原型。
+                        </p>
+                    </div>
+                    <!-- Role Card: Developer -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group glow-border transition-all duration-300"
+                    >
+                        <div
+                            class="w-20 h-20 rounded-full mb-4 border-2 border-blue-500 p-1"
+                        >
+                            <img
+                                alt="Developer Avatar"
+                                class="w-full h-full rounded-full object-cover"
+                                src="./img/03.png"
+                            />
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-1">
+                            开发工程师
+                        </h3>
+                        <p class="text-xs text-blue-400 font-medium mb-3">
+                            代码与实现
+                        </p>
+                        <p class="text-sm text-slate-400 leading-snug">
+                            全栈架构搭建，高效输出生产级代码。
+                        </p>
+                    </div>
+                    <!-- Role Card: QA -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group glow-border transition-all duration-300"
+                    >
+                        <div
+                            class="w-20 h-20 rounded-full mb-4 border-2 border-green-500 p-1"
+                        >
+                            <img
+                                alt="QA Avatar"
+                                class="w-full h-full rounded-full object-cover"
+                                src="./img/04.png"
+                            />
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-1">
+                            测试工程师
+                        </h3>
+                        <p class="text-xs text-green-400 font-medium mb-3">
+                            质量与稳定
+                        </p>
+                        <p class="text-sm text-slate-400 leading-snug">
+                            自动化测试覆盖，确保系统坚不可摧。
+                        </p>
+                    </div>
+                    <!-- Role Card: Marketing -->
+                    <div
+                        class="glass-panel p-6 rounded-2xl flex flex-col items-center text-center group glow-border transition-all duration-300"
+                    >
+                        <div
+                            class="w-20 h-20 rounded-full mb-4 border-2 border-pink-500 p-1"
+                        >
+                            <img
+                                alt="Marketing Avatar"
+                                class="w-full h-full rounded-full object-cover"
+                                src="./img/05.png"
+                            />
+                        </div>
+                        <h3 class="text-lg font-semibold text-white mb-1">
+                            营销专家
+                        </h3>
+                        <p class="text-xs text-pink-400 font-medium mb-3">
+                            增长与品牌
+                        </p>
+                        <p class="text-sm text-slate-400 leading-snug">
+                            制定 GTM 策略，驱动用户获取与留存。
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Team Visualization -->
+            <!-- BEGIN: Features -->
+            <section class="max-w-7xl mx-auto px-6 py-24 relative">
+                <!-- Decorative line -->
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                ></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div
+                        class="p-8 rounded-2xl border border-brand-border bg-brand-surface"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-cyan"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            一键部署
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            告别繁琐的配置与漫长的招聘周期。通过极简的指令，瞬间唤醒整个虚拟团队，基础设施与开发环境即刻就绪。
+                        </p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div
+                        class="p-8 rounded-2xl border border-brand-border bg-brand-surface"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-brand-purple"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            极低成本
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            将传统初创公司的高昂的人力成本转化为可控的算力消耗。用指数级降低的成本，换取毫不妥协的专业产出。
+                        </p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div
+                        class="p-8 rounded-2xl border border-brand-border bg-brand-surface"
+                    >
+                        <div
+                            class="w-12 h-12 rounded-lg bg-slate-100/10 border border-slate-100/20 flex items-center justify-center mb-6"
+                        >
+                            <svg
+                                class="w-6 h-6 text-slate-200"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                ></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">
+                            开源社区驱动
+                        </h3>
+                        <p class="text-slate-400 leading-relaxed">
+                            基于透明、开放的架构构建。连接全球开发者的智慧，不断进化
+                            Agent 能力模板，共享最佳实践与工作流。
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- END: Features -->
+            <!-- BEGIN: Call to Action -->
+            <section class="max-w-4xl mx-auto px-6 py-24 text-center">
+                <div
+                    class="glass-panel p-12 rounded-3xl relative overflow-hidden"
+                >
+                    <h2
+                        class="text-4xl font-bold text-white mb-6 relative z-10"
+                    >
+                        准备好开启您的 OPC 之旅了吗？
+                    </h2>
+                    <p
+                        class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto relative z-10"
+                    >
+                        加入未来商业形态。即刻获取源码，在本地或云端启动属于您的超级单人企业。
+                    </p>
+                    <a
+                        class="relative z-10 inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-black bg-white rounded-full hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]"
+                        href="https://github.com/cangjielanguage-sig/ACEHarness"
+                    >
+                        <svg
+                            aria-hidden="true"
+                            class="w-5 h-5"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                clip-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                fill-rule="evenodd"
+                            ></path>
+                        </svg>
+                        在 GitHub 上查看
+                    </a>
+                </div>
+            </section>
+            <!-- END: Call to Action -->
+        </main>
+        <!-- BEGIN: Footer -->
+        <footer
+            class="border-t border-brand-border bg-brand-bg mt-12 py-8 relative z-10"
+        >
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <p class="text-sm text-slate-500">
+                    © 2024 ACEHarness. 构建新一代商业形态.
+                </p>
+            </div>
+        </footer>
+        <!-- END: Footer -->
+    </body>
+</html>
