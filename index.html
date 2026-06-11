@@ -90,26 +90,59 @@
                     <a
                         class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
                         href="#"
+                        data-i18n="nav.product"
                         >产品</a
                     >
                     <a
                         class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
                         href="#"
+                        data-i18n="nav.tech"
                         >技术</a
                     >
                     <a
                         class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
                         href="#"
+                        data-i18n="nav.community"
                         >社区</a
                     >
                     <a
                         class="text-sm font-medium text-slate-300 hover:text-brand-cyan transition-colors"
                         href="#"
+                        data-i18n="nav.docs"
                         >文档</a
                     >
                 </nav>
-                <!-- Action Button -->
-                <div class="flex items-center">
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-3">
+                    <!-- Language Switcher -->
+                    <button
+                        id="lang-toggle"
+                        type="button"
+                        aria-label="Switch language"
+                        class="px-3 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-brand-border text-slate-300 hover:text-brand-cyan text-sm font-medium transition-all inline-flex items-center gap-1.5"
+                    >
+                        <svg
+                            aria-hidden="true"
+                            class="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path>
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3.6 9h16.8M3.6 15h16.8M12 3a14.5 14.5 0 010 18M12 3a14.5 14.5 0 000 18"
+                            ></path>
+                        </svg>
+                        <span id="lang-toggle-label">EN</span>
+                    </button>
                     <a
                         href="https://github.com/cangjielanguage-sig/ACEHarness"
                         class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-brand-border text-white text-sm font-medium transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] inline-flex items-center justify-center gap-2"
@@ -144,6 +177,7 @@
                     ></span>
                     <span
                         class="text-xs font-medium text-brand-cyan uppercase tracking-wider"
+                        data-i18n="hero.badge"
                         >你的团队，你做主</span
                     >
                 </div>
@@ -158,6 +192,7 @@
                 <!-- Subtitle -->
                 <p
                     class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+                    data-i18n="hero.subtitle"
                 >
                     只需一句话，即刻生成包含
                     CEO、设计、开发、测试、营销全角色的虚拟化团队
@@ -178,11 +213,13 @@
                             class="w-full bg-transparent border-none text-brand-cyan font-mono text-sm md:text-base focus:ring-0 placeholder-brand-cyan/50 py-4"
                             readonly=""
                             type="text"
+                            data-i18n-value="hero.input"
                             value="帮我搭建一个App开发团队"
                         />
                         <div class="px-4">
                             <button
                                 class="bg-white text-black px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-200 transition-colors"
+                                data-i18n="hero.run"
                             >
                                 Run
                             </button>
@@ -203,10 +240,10 @@
             <!-- BEGIN: Team Visualization -->
             <section class="max-w-7xl mx-auto px-6 pt-24">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl font-bold text-white mb-4">
+                    <h2 class="text-3xl font-bold text-white mb-4" data-i18n="team.title">
                         全栈 AI 团队就绪
                     </h2>
-                    <p class="text-slate-400">
+                    <p class="text-slate-400" data-i18n="team.subtitle">
                         高度协作的智能 Agent，无缝对接企业生命周期
                     </p>
                 </div>
@@ -226,13 +263,13 @@
                                 src="./img/01.png"
                             />
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1">
+                        <h3 class="text-lg font-semibold text-white mb-1" data-i18n="role.ceo.title">
                             CEO
                         </h3>
-                        <p class="text-xs text-brand-purple font-medium mb-3">
+                        <p class="text-xs text-brand-purple font-medium mb-3" data-i18n="role.ceo.tag">
                             决策与战略
                         </p>
-                        <p class="text-sm text-slate-400 leading-snug">
+                        <p class="text-sm text-slate-400 leading-snug" data-i18n="role.ceo.desc">
                             制定商业模式，协调跨部门资源分配。
                         </p>
                     </div>
@@ -249,13 +286,13 @@
                                 src="./img/02.png"
                             />
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1">
+                        <h3 class="text-lg font-semibold text-white mb-1" data-i18n="role.designer.title">
                             设计师
                         </h3>
-                        <p class="text-xs text-brand-cyan font-medium mb-3">
+                        <p class="text-xs text-brand-cyan font-medium mb-3" data-i18n="role.designer.tag">
                             视觉与体验
                         </p>
-                        <p class="text-sm text-slate-400 leading-snug">
+                        <p class="text-sm text-slate-400 leading-snug" data-i18n="role.designer.desc">
                             输出品牌 VI，构建高保真产品原型。
                         </p>
                     </div>
@@ -272,13 +309,13 @@
                                 src="./img/03.png"
                             />
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1">
+                        <h3 class="text-lg font-semibold text-white mb-1" data-i18n="role.dev.title">
                             开发工程师
                         </h3>
-                        <p class="text-xs text-blue-400 font-medium mb-3">
+                        <p class="text-xs text-blue-400 font-medium mb-3" data-i18n="role.dev.tag">
                             代码与实现
                         </p>
-                        <p class="text-sm text-slate-400 leading-snug">
+                        <p class="text-sm text-slate-400 leading-snug" data-i18n="role.dev.desc">
                             全栈架构搭建，高效输出生产级代码。
                         </p>
                     </div>
@@ -295,13 +332,13 @@
                                 src="./img/04.png"
                             />
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1">
+                        <h3 class="text-lg font-semibold text-white mb-1" data-i18n="role.qa.title">
                             测试工程师
                         </h3>
-                        <p class="text-xs text-green-400 font-medium mb-3">
+                        <p class="text-xs text-green-400 font-medium mb-3" data-i18n="role.qa.tag">
                             质量与稳定
                         </p>
-                        <p class="text-sm text-slate-400 leading-snug">
+                        <p class="text-sm text-slate-400 leading-snug" data-i18n="role.qa.desc">
                             自动化测试覆盖，确保系统坚不可摧。
                         </p>
                     </div>
@@ -318,13 +355,13 @@
                                 src="./img/05.png"
                             />
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-1">
+                        <h3 class="text-lg font-semibold text-white mb-1" data-i18n="role.mkt.title">
                             营销专家
                         </h3>
-                        <p class="text-xs text-pink-400 font-medium mb-3">
+                        <p class="text-xs text-pink-400 font-medium mb-3" data-i18n="role.mkt.tag">
                             增长与品牌
                         </p>
-                        <p class="text-sm text-slate-400 leading-snug">
+                        <p class="text-sm text-slate-400 leading-snug" data-i18n="role.mkt.desc">
                             制定 GTM 策略，驱动用户获取与留存。
                         </p>
                     </div>
@@ -359,10 +396,10 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="feature.deploy.title">
                             一键部署
                         </h3>
-                        <p class="text-slate-400 leading-relaxed">
+                        <p class="text-slate-400 leading-relaxed" data-i18n="feature.deploy.desc">
                             告别繁琐的配置与漫长的招聘周期。通过极简的指令，瞬间唤醒整个虚拟团队，基础设施与开发环境即刻就绪。
                         </p>
                     </div>
@@ -387,10 +424,10 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="feature.cost.title">
                             极低成本
                         </h3>
-                        <p class="text-slate-400 leading-relaxed">
+                        <p class="text-slate-400 leading-relaxed" data-i18n="feature.cost.desc">
                             将传统初创公司的高昂的人力成本转化为可控的算力消耗。用指数级降低的成本，换取毫不妥协的专业产出。
                         </p>
                     </div>
@@ -415,10 +452,10 @@
                                 ></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">
+                        <h3 class="text-xl font-bold text-white mb-3" data-i18n="feature.oss.title">
                             开源社区驱动
                         </h3>
-                        <p class="text-slate-400 leading-relaxed">
+                        <p class="text-slate-400 leading-relaxed" data-i18n="feature.oss.desc">
                             基于透明、开放的架构构建。连接全球开发者的智慧，不断进化
                             Agent 能力模板，共享最佳实践与工作流。
                         </p>
@@ -433,11 +470,13 @@
                 >
                     <h2
                         class="text-4xl font-bold text-white mb-6 relative z-10"
+                        data-i18n="cta.title"
                     >
                         准备好开启您的 OPC 之旅了吗？
                     </h2>
                     <p
                         class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto relative z-10"
+                        data-i18n="cta.desc"
                     >
                         加入未来商业形态。即刻获取源码，在本地或云端启动属于您的超级单人企业。
                     </p>
@@ -457,7 +496,7 @@
                                 fill-rule="evenodd"
                             ></path>
                         </svg>
-                        在 GitHub 上查看
+                        <span data-i18n="cta.button">在 GitHub 上查看</span>
                     </a>
                 </div>
             </section>
@@ -468,11 +507,157 @@
             class="border-t border-brand-border bg-brand-bg mt-12 py-8 relative z-10"
         >
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <p class="text-sm text-slate-500">
+                <p class="text-sm text-slate-500" data-i18n="footer">
                     © 2024 ACEHarness. 构建新一代商业形态.
                 </p>
             </div>
         </footer>
         <!-- END: Footer -->
+        <!-- BEGIN: i18n -->
+        <script data-purpose="i18n">
+            (function () {
+                const I18N = {
+                    zh: {
+                        "nav.product": "产品",
+                        "nav.tech": "技术",
+                        "nav.community": "社区",
+                        "nav.docs": "文档",
+                        "hero.badge": "你的团队，你做主",
+                        "hero.subtitle":
+                            "只需一句话，即刻生成包含 CEO、设计、开发、测试、营销全角色的虚拟化团队",
+                        "hero.input": "帮我搭建一个App开发团队",
+                        "hero.run": "运行",
+                        "team.title": "全栈 AI 团队就绪",
+                        "team.subtitle":
+                            "高度协作的智能 Agent，无缝对接企业生命周期",
+                        "role.ceo.title": "CEO",
+                        "role.ceo.tag": "决策与战略",
+                        "role.ceo.desc": "制定商业模式，协调跨部门资源分配。",
+                        "role.designer.title": "设计师",
+                        "role.designer.tag": "视觉与体验",
+                        "role.designer.desc":
+                            "输出品牌 VI，构建高保真产品原型。",
+                        "role.dev.title": "开发工程师",
+                        "role.dev.tag": "代码与实现",
+                        "role.dev.desc":
+                            "全栈架构搭建，高效输出生产级代码。",
+                        "role.qa.title": "测试工程师",
+                        "role.qa.tag": "质量与稳定",
+                        "role.qa.desc":
+                            "自动化测试覆盖，确保系统坚不可摧。",
+                        "role.mkt.title": "营销专家",
+                        "role.mkt.tag": "增长与品牌",
+                        "role.mkt.desc":
+                            "制定 GTM 策略，驱动用户获取与留存。",
+                        "feature.deploy.title": "一键部署",
+                        "feature.deploy.desc":
+                            "告别繁琐的配置与漫长的招聘周期。通过极简的指令，瞬间唤醒整个虚拟团队，基础设施与开发环境即刻就绪。",
+                        "feature.cost.title": "极低成本",
+                        "feature.cost.desc":
+                            "将传统初创公司的高昂的人力成本转化为可控的算力消耗。用指数级降低的成本，换取毫不妥协的专业产出。",
+                        "feature.oss.title": "开源社区驱动",
+                        "feature.oss.desc":
+                            "基于透明、开放的架构构建。连接全球开发者的智慧，不断进化 Agent 能力模板，共享最佳实践与工作流。",
+                        "cta.title": "准备好开启您的 OPC 之旅了吗？",
+                        "cta.desc":
+                            "加入未来商业形态。即刻获取源码，在本地或云端启动属于您的超级单人企业。",
+                        "cta.button": "在 GitHub 上查看",
+                        "footer": "© 2024 ACEHarness. 构建新一代商业形态.",
+                    },
+                    en: {
+                        "nav.product": "Products",
+                        "nav.tech": "Technology",
+                        "nav.community": "Community",
+                        "nav.docs": "Docs",
+                        "hero.badge": "YOUR TEAM, YOUR RULES",
+                        "hero.subtitle":
+                            "One prompt spins up a virtual team — CEO, design, dev, QA, and marketing, all included.",
+                        "hero.input": "Help me build an app development team",
+                        "hero.run": "Run",
+                        "team.title": "Your Full-Stack AI Team, Ready",
+                        "team.subtitle":
+                            "Tightly collaborating agents that cover the entire company lifecycle.",
+                        "role.ceo.title": "CEO",
+                        "role.ceo.tag": "Strategy & Decisions",
+                        "role.ceo.desc":
+                            "Sets the business model and coordinates resources across teams.",
+                        "role.designer.title": "Designer",
+                        "role.designer.tag": "Visual & Experience",
+                        "role.designer.desc":
+                            "Crafts brand identity and high-fidelity product prototypes.",
+                        "role.dev.title": "Developer",
+                        "role.dev.tag": "Code & Build",
+                        "role.dev.desc":
+                            "Builds full-stack architecture and ships production-grade code.",
+                        "role.qa.title": "QA Engineer",
+                        "role.qa.tag": "Quality & Reliability",
+                        "role.qa.desc":
+                            "Automated test coverage to keep the system rock-solid.",
+                        "role.mkt.title": "Marketing Lead",
+                        "role.mkt.tag": "Growth & Brand",
+                        "role.mkt.desc":
+                            "Drives GTM strategy, user acquisition, and retention.",
+                        "feature.deploy.title": "One-Click Deploy",
+                        "feature.deploy.desc":
+                            "No more tedious setup or long hiring cycles. A single command wakes the entire virtual team — infrastructure and dev environments ready instantly.",
+                        "feature.cost.title": "Ultra-Low Cost",
+                        "feature.cost.desc":
+                            "Trade steep startup headcount costs for controllable compute spend. Uncompromising professional output at a fraction of the price.",
+                        "feature.oss.title": "Open-Source Driven",
+                        "feature.oss.desc":
+                            "Built on a transparent, open architecture. Connects developers worldwide to evolve agent templates and share best practices.",
+                        "cta.title": "Ready to start your OPC journey?",
+                        "cta.desc":
+                            "Join the next era of business. Grab the source and launch your one-person company locally or in the cloud.",
+                        "cta.button": "View on GitHub",
+                        "footer":
+                            "© 2024 ACEHarness. Building the next generation of business.",
+                    },
+                };
+
+                const STORAGE_KEY = "ace-harness-lang";
+                const SUPPORTED = ["zh", "en"];
+
+                function detectInitial() {
+                    const saved = localStorage.getItem(STORAGE_KEY);
+                    if (saved && SUPPORTED.includes(saved)) return saved;
+                    const nav = (navigator.language || "zh").toLowerCase();
+                    return nav.startsWith("zh") ? "zh" : "en";
+                }
+
+                function apply(lang) {
+                    const dict = I18N[lang] || I18N.zh;
+                    document.documentElement.lang =
+                        lang === "zh" ? "zh-CN" : "en";
+                    document
+                        .querySelectorAll("[data-i18n]")
+                        .forEach((el) => {
+                            const key = el.getAttribute("data-i18n");
+                            if (dict[key] != null) el.textContent = dict[key];
+                        });
+                    document
+                        .querySelectorAll("[data-i18n-value]")
+                        .forEach((el) => {
+                            const key = el.getAttribute("data-i18n-value");
+                            if (dict[key] != null) el.value = dict[key];
+                        });
+                    const label = document.getElementById("lang-toggle-label");
+                    if (label) label.textContent = lang === "zh" ? "EN" : "中";
+                    localStorage.setItem(STORAGE_KEY, lang);
+                }
+
+                let current = detectInitial();
+                apply(current);
+
+                const btn = document.getElementById("lang-toggle");
+                if (btn) {
+                    btn.addEventListener("click", () => {
+                        current = current === "zh" ? "en" : "zh";
+                        apply(current);
+                    });
+                }
+            })();
+        </script>
+        <!-- END: i18n -->
     </body>
 </html>
